@@ -1,0 +1,33 @@
+Lget_max:
+push R15 #将旧的fp值存入栈内
+mov R15,sp
+push R2
+push R3
+push R4
+load R2,2(R15)
+load R3,3(R15)
+sle R4,R2,R3
+bneqz R4,L100
+mov R1,R2
+goto Lreturn
+L100:
+mov R1,R3
+Lreturn :
+pop R4
+pop R3
+pop R2
+mov sp,R15
+pop R15
+ret
+
+#get_min函数中有两个参数a和b,将最大值放到R1中返回
+Lget_min:
+push R15 #将旧的fp值存入栈内
+mov R15,sp
+push R2
+push R3
+push R4
+load R2,2(R15)
+load R3,3(R15)
+sle R4,R2,R3
+beqz R4,L100
